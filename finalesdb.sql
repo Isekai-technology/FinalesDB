@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-09-2023 a las 20:53:14
+-- Tiempo de generación: 06-10-2023 a las 01:14:04
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 7.4.33
 
@@ -49,23 +49,24 @@ INSERT INTO `carreras` (`ID`, `Nombre`) VALUES
 CREATE TABLE `correlativas` (
   `ID` int(11) NOT NULL,
   `ID_Materia` int(11) NOT NULL COMMENT 'Materia',
-  `ID_Correlativa` int(11) NOT NULL COMMENT 'Materia requerida para cursar la materia(ID_Materia)'
+  `ID_Correlativa` int(11) NOT NULL COMMENT 'Materia requerida para cursar la materia(ID_Materia)',
+  `id_Plan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `correlativas`
 --
 
-INSERT INTO `correlativas` (`ID`, `ID_Materia`, `ID_Correlativa`) VALUES
-(1, 10, 4),
-(2, 12, 2),
-(3, 13, 1),
-(4, 20, 9),
-(5, 21, 11),
-(6, 22, 13),
-(7, 23, 15),
-(8, 16, 16),
-(9, 29, 20);
+INSERT INTO `correlativas` (`ID`, `ID_Materia`, `ID_Correlativa`, `id_Plan`) VALUES
+(1, 10, 4, 0),
+(2, 12, 2, 0),
+(3, 13, 1, 0),
+(4, 20, 9, 0),
+(5, 21, 11, 0),
+(6, 22, 13, 0),
+(7, 23, 15, 0),
+(8, 16, 16, 0),
+(9, 29, 20, 0);
 
 -- --------------------------------------------------------
 
@@ -272,7 +273,7 @@ INSERT INTO `roles` (`ID`, `Nombre`) VALUES
 CREATE TABLE `usuarios` (
   `ID` int(11) NOT NULL,
   `Nombre` varchar(25) NOT NULL,
-  `Contraseña` varchar(25) NOT NULL,
+  `Contra` text NOT NULL,
   `Email` varchar(100) NOT NULL,
   `ID_Rol` int(11) NOT NULL COMMENT 'Referencia la rol que puede tomar la cuenta'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -281,8 +282,8 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`ID`, `Nombre`, `Contraseña`, `Email`, `ID_Rol`) VALUES
-(1, 'admin', 'admin', 'admin@hilet.com', 1),
+INSERT INTO `usuarios` (`ID`, `Nombre`, `Contra`, `Email`, `ID_Rol`) VALUES
+(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin@hilet.com', 1),
 (2, 'jorge', '1234', 'jorge1234@hilet.com', 1);
 
 --
